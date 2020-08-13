@@ -39,7 +39,6 @@
                 );  
 
                 $stmt->close();  
-
                 $response['error'] = false;   
                 $response['message'] = 'User registered successfully';   
                 $response['user'] = $user;   
