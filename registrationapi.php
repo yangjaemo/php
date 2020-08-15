@@ -1,4 +1,4 @@
-    <?php   
+      <?php   
       require_once 'connection.php';  
       $response = array();  
       if(isset($_GET['apicall'])){  
@@ -20,6 +20,7 @@
             $response['message'] = 'User already registered';  
             $stmt->close();  
         }  
+            
         else{  
             $stmt = $conn->prepare("INSERT INTO users (username, email, password, gender) VALUES (?, ?, ?, ?)");  
             $stmt->bind_param("ssss", $username, $email, $password, $gender);  
@@ -39,17 +40,19 @@
                 );  
 
                 $stmt->close();  
+
                 $response['error'] = false;   
                 $response['message'] = 'User registered successfully';   
                 $response['user'] = $user;   
             }  
         }  
 
-    }  
+    }           
     else{  
         $response['error'] = true;   
         $response['message'] = 'required parameters are not available';   
     }  
+              
     break;   
     case 'login':  
       if(isTheseParametersAvailable(array('username', 'password'))){  
@@ -78,24 +81,29 @@
         $response['error'] = false;   
         $response['message'] = 'Invalid username or password';  
      }  
-    }  
+    } 
+              
     break;   
     default:   
      $response['error'] = true;   
      $response['message'] = 'Invalid Operation Called';  
-    }  
-    }  
+      } 
+          
+    } 
+
     else{  
      $response['error'] = true;   
      $response['message'] = 'Invalid API Call';  
     }  
-    echo json_encode($response);  
-    function isTheseParametersAvailable($params){  
-    foreach($params as $param){  
+        echo json_encode($response);  
+        function isTheseParametersAvailable($params){  
+        foreach($params as $param){  
+            
      if(!isset($_POST[$param])){  
          return false;   
       }  
     }  
+            
     return true;   
     }  
     ?>
