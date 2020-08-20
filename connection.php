@@ -1,5 +1,5 @@
 <?php
-$db_host="http://125.142.9.47"; //localhost server 
+$db_host="localhost"; //localhost server 
 $db_user="root"; //database username
 $db_password="123"; //database password   
 $db_name="registerlogin"; //database name
