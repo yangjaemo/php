@@ -1,18 +1,15 @@
 <?php
-$db_host="http://smcyjm.dothome.co.kr"; //localhost server 
-$db_user="smcyjm'"; //database username
-$db_password="gosu3308*^^*"; //database password   
-$db_name="users"; //database name
+$db_host="http://125.142.9.47"; //localhost server 
+$db_user="root"; //database username
+$db_password="123"; //database password   
+$db_name="registerlogin"; //database name
 
-try
-{
+try{
  $db=new PDO("mysql:host={$db_host};dbname={$db_user}",$username,$password);
  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 
-catch(PDOEXCEPTION $e)
-{
+catch(PDOEXCEPTION $e){
  $e->getMessage();
 }
-
 ?>
