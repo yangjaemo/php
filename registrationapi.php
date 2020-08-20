@@ -1,16 +1,16 @@
-      <?php   
+    <?php   
       require_once 'connection.php';  
       $response = array();  
       if(isset($_GET['apicall'])){  
       switch($_GET['apicall']){  
       case 'signup':  
-        if(isTheseParametersAvailable(array('username','email','password','gender'))){  
+        if(isTheseParametersAvailable(array('username','email','password','gender'))){ 
         $username = $_POST['username'];   
         $email = $_POST['email'];   
         $password = md5($_POST['password']);  
         $gender = $_POST['gender'];   
-
-        $stmt = $conn->prepare("SELECT id FROM users WHERE username = ? OR email = ?");  
+            
+        $stmt = $conn->prepare("SELECT id FROM users WHERE username = ? OR email = ?"); 
         $stmt->bind_param("ss", $username, $email);  
         $stmt->execute();  
         $stmt->store_result();  
@@ -90,7 +90,6 @@
       } 
           
     } 
-
     else{  
      $response['error'] = true;   
      $response['message'] = 'Invalid API Call';  
@@ -107,3 +106,4 @@
     return true;   
     }  
     ?>
+
